@@ -4,6 +4,7 @@ using System.Collections;
 public class player : MonoBehaviour {
 	int Health;
 
+	public LevelManager levelManager;
 	public GameObject weaponBallistic;
 	public GameObject Player;
 	public  Transform FiringPoint;
@@ -19,6 +20,7 @@ public class player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Health = 100;
+		newPos = transform.position;
 	}
 
 	void fireWeapon(){
@@ -29,29 +31,41 @@ public class player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
-		if(Input.GetKeyDown(KeyCode.Joystick1Button0)){
-		   fireWeapon();	
-		}
-		if(Input.GetAxisRaw("Horizontal") == 0){
-			horizontalInput = Mathf.SmoothDamp(horizontalInput, 0.0f, ref dampVelocityX, movementDamp);
-			newPos.x += horizontalInput * movementSpeed * Time.deltaTime;
-		}
-		else{
-			newPos.x += Input.GetAxisRaw("Horizontal") * movementSpeed * Time.deltaTime;
-			horizontalInput = Input.GetAxisRaw ("Horizontal");
-		}
-		if(Input.GetAxisRaw("Vertical") == 0){
-			verticalInput = Mathf.SmoothDamp(verticalInput, 0.0f, ref dampVelocityY, movementDamp);
-			newPos.y += verticalInput * movementSpeed * Time.deltaTime;
-		}
-		else{
-			newPos.y += Input.GetAxisRaw("Vertical") * movementSpeed * Time.deltaTime;
-			verticalInput = Input.GetAxisRaw ("Vertical");
-		}
 
-		//apply new position
-		transform.localPosition = newPos;
+		if(transform.localPosition.x >= levelManager.wallWidth && transform.localPosition.y <= (levelManager.mapWidth - levelManager.wallWidth)-1){ 
+
+			if(Input.GetKeyDown(KeyCode.Joystick1Button0)){
+			   fireWeapon();	
+			}
+			if(Input.GetAxisRaw("Horizontal") == 0){
+				horizontalInput = Mathf.SmoothDamp(horizontalInput, 0.0f, ref dampVelocityX, movementDamp);
+				newPos.x += horizontalInput * movementSpeed * Time.deltaTime;
+			}
+			else{
+				newPos.x += Input.GetAxisRaw("Horizontal") * movementSpeed * Time.deltaTime;
+				horizontalInput = Input.GetAxisRaw ("Horizontal");
+			}
+			if(Input.GetAxisRaw("Vertical") == 0){
+				verticalInput = Mathf.SmoothDamp(verticalInput, 0.0f, ref dampVelocityY, movementDamp);
+				newPos.y += verticalInput * movementSpeed * Time.deltaTime;
+			}
+			else{
+				newPos.y += Input.GetAxisRaw("Vertical") * movementSpeed * Time.deltaTime;
+				verticalInput = Input.GetAxisRaw ("Vertical");
+			}
+				
+			if(newPos.x < levelManager.wallWidth) {
+				newPos.x = levelManager.wallWidth;
+			}
+			if(newPos.x > (levelManager.mapWidth - levelManager.wallWidth)-1){
+				newPos.x = (levelManager.mapWidth - levelManager.wallWidth)-1;
+			}
+				//apply new position
+				transform.localPosition = newPos;
+
+		}
 
 	 }
+
+	
 }
