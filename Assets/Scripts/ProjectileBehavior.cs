@@ -6,7 +6,7 @@ public class ProjectileBehavior : MonoBehaviour {
 	public  int TTL;
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(TTLDestroy());
+//		StartCoroutine(TTLDestroy());
 	}
 	
 	// Update is called once per frame
