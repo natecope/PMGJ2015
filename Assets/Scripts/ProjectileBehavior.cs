@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ProjectileBehavior : MonoBehaviour {
 	public float Speed = 30.0f;
-	public  int TTL;
+	public  int TTL =500;
 	// Use this for initialization
 	void Start () {
 //		StartCoroutine(TTLDestroy());
@@ -11,8 +11,11 @@ public class ProjectileBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		TTL--;
+		if(TTL==0)
+			Destroy(gameObject);
 
-		transform.Translate(Vector3.up * Speed * Time.deltaTime, Space.Self);
+		transform.Translate(Vector3.down * Speed * Time.deltaTime, Space.Self);
 	}
 
 

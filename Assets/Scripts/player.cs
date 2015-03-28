@@ -22,7 +22,7 @@ public class player : MonoBehaviour {
 	}
 
 	void fireWeapon(){
-		Instantiate(weaponBallistic, FiringPoint.position , FiringPoint.rotation);
+		Instantiate(weaponBallistic, FiringPoint.position , new Quaternion(FiringPoint.rotation.x,FiringPoint.rotation.y+180,FiringPoint.rotation.z,FiringPoint.rotation.w));
 		
 
 	}
