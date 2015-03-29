@@ -20,7 +20,11 @@ public class player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Health = 100;
+
+		transform.position = new Vector3((levelManager.mapWidth / 2)+1, (levelManager.mapHeight / 2) + 1, 0);
 		newPos = transform.position;
+
+
 	}
 
 	void fireWeapon(){

@@ -39,13 +39,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df0bbeadc6f9484a95c8565031f735f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bottomObjects:
+  - {fileID: 144192, guid: 6b015ade9693a4434b34ec1937144c44, type: 2}
+  - {fileID: 127196, guid: 8571fd9b2ff834222992af4b3d1f366f, type: 2}
+  spawnDelaySeconds: 1
   mainCamera: {fileID: 0}
   cameraDistance: -5
   leftWallPrefab: {fileID: 198128, guid: f5adf4851d7d5470198ac528b3508b81, type: 2}
   rightWallPrefab: {fileID: 198128, guid: f5adf4851d7d5470198ac528b3508b81, type: 2}
   backgroundPrefab: {fileID: 123532, guid: 48e01965c1cfc48c7b387dc546617821, type: 2}
+  backgroundLighting: {fileID: 0}
   backgroundMoveSpeed: 5
   wallMoveSpeed: 10
+  bottomObjectsMoveSpeed: 1
   mapWidth: 17
   mapHeight: 15
   wallWidth: 2

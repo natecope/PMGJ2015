@@ -130,16 +130,7 @@ Prefab:
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 1062880266}
-    - target: {fileID: 21209596, guid: 0751b58c8bcef2b499f93ffe365c59ee, type: 2}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 176974, guid: 0751b58c8bcef2b499f93ffe365c59ee, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11451926, guid: 0751b58c8bcef2b499f93ffe365c59ee, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0751b58c8bcef2b499f93ffe365c59ee, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &573107631
@@ -185,10 +176,6 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2000738285}
-    - target: {fileID: 11459892, guid: 91beb975b016640a697cfd22d4b86e39, type: 2}
-      propertyPath: mapHeight
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91beb975b016640a697cfd22d4b86e39, type: 2}
   m_IsPrefabParent: 0

@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+[System.Serializable]
 public class LevelManager : MonoBehaviour {
 
+
+	public GameObject[] bottomObjects; 
+	public float spawnDelaySeconds;
 	// reference to camera in order to position correctly with map
 	public GameObject mainCamera;
 
@@ -12,8 +15,10 @@ public class LevelManager : MonoBehaviour {
 	public GameObject rightWallPrefab;
 	public GameObject backgroundPrefab;
 	public GameObject backgroundLighting;
+
 	public float backgroundMoveSpeed;
 	public float wallMoveSpeed;
+	public float bottomObjectsMoveSpeed;
 
 	// excludes left and right wall tile
 	public int mapWidth;
@@ -27,15 +32,22 @@ public class LevelManager : MonoBehaviour {
 	void Start () {
 
 		// position cameran to center of map
-		mainCamera.transform.position = new Vector3(mapWidth / 2, (mapHeight / 2) + 1, cameraDistance);
+		mainCamera.transform.position = new Vector3((mapWidth / 2)+1, (mapHeight / 2) + 1, cameraDistance);
 
 		SpawnLevel();
+		StartObjectSpawner();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 
+
+	}
+
+	void StartObjectSpawner(){
+
+		StartCoroutine("objectRowSpawner");
 
 	}
 
@@ -57,7 +69,7 @@ public class LevelManager : MonoBehaviour {
 					// stuff left wall map objects into array
 					mapArray[x,y] = Instantiate (leftWallPrefab, new Vector2(x,y), leftWallPrefab.transform.rotation) as GameObject;
 
-				} else if (x >= (mapWidth-wallWidth)){
+				} else if (x > (mapWidth-wallWidth)){
 
 					// stuff right wall map objects into array
 					mapArray[x,y] = Instantiate (rightWallPrefab, new Vector2(x,y), rightWallPrefab.transform.rotation) as GameObject;
@@ -82,7 +94,7 @@ public class LevelManager : MonoBehaviour {
 		for(int y = 0; y < mapHeight; y++){
 			for(int x = 0; x < mapWidth; x++){
 
-				if(x<wallWidth || x>= (mapWidth-wallWidth)) {
+				if(x<wallWidth || x> (mapWidth-wallWidth)) {
 					tileMoveSpeed = wallMoveSpeed;
 				} else {
 					tileMoveSpeed = backgroundMoveSpeed;
@@ -98,7 +110,7 @@ public class LevelManager : MonoBehaviour {
 				if(Mathf.Round (mapArray[x,y].transform.position.y) >= mapHeight){
 					newPos.y = -0.4f;
 
-					if(x<wallWidth || x>= (mapWidth-wallWidth)) {
+					if(x<wallWidth || x> (mapWidth-wallWidth)) {
 						newPos.y = 0f;
 					} else {
 						newPos.y = -0.45f;
@@ -113,5 +125,30 @@ public class LevelManager : MonoBehaviour {
 		}
 
 	}
+
+
+	IEnumerator objectRowSpawner(){
+		int toSkip = 0;
+		while(true){
+			yield return new WaitForSeconds(spawnDelaySeconds);
+
+			//spawn row of objects. Randomize
+			for(int x = 0 + wallWidth; x < mapWidth - wallWidth; x++){
+
+
+				if(toSkip == 0){
+					GameObject objectToSpawn = bottomObjects[(int)Random.Range (0, bottomObjects.Length)];
+					GameObject objectSpawned = Instantiate (objectToSpawn, new Vector2(x,0), objectToSpawn.transform.rotation) as GameObject;
+
+					toSkip = objectSpawned.GetComponent<RockBehavior>().tileWidth - 1;
+				} else {
+					toSkip--;
+				}
+
+			}
+		}
+	}
+
+
 
 }
