@@ -44,6 +44,7 @@ MonoBehaviour:
   leftWallPrefab: {fileID: 198128, guid: f5adf4851d7d5470198ac528b3508b81, type: 2}
   rightWallPrefab: {fileID: 198128, guid: f5adf4851d7d5470198ac528b3508b81, type: 2}
   backgroundPrefab: {fileID: 123532, guid: 48e01965c1cfc48c7b387dc546617821, type: 2}
+  backgroundLighting: {fileID: 0}
   backgroundMoveSpeed: 5
   wallMoveSpeed: 10
   mapWidth: 17
