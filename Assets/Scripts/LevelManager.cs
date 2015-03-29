@@ -91,12 +91,18 @@ public class LevelManager : MonoBehaviour {
 				Vector2 newPos = new Vector2();
 
 				// move tile position
-				newPos.y = mapArray[x,y].transform.position.y + tileMoveSpeed * Time.deltaTime;
+				newPos.y = mapArray[x,y].transform.position.y + tileMoveSpeed * Time.deltaTime/2;
 				newPos.x = mapArray[x,y].transform.position.x;
 
 				// reset to bottom if hit top of map
 				if(Mathf.Round (mapArray[x,y].transform.position.y) >= mapHeight){
-					newPos.y = 0;
+					newPos.y = -0.4f;
+
+					if(x<wallWidth || x>= (mapWidth-wallWidth)) {
+						newPos.y = 0f;
+					} else {
+						newPos.y = -0.45f;
+					}
 				}
 
 				// update object position
