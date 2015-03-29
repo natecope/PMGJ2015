@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Rock
   - Drill
+  - Debris
+  - Beam
   layers:
   - Default
   - TransparentFX

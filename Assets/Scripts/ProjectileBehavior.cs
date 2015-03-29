@@ -15,7 +15,7 @@ public class ProjectileBehavior : MonoBehaviour {
 		if(TTL==0)
 			Destroy(gameObject);
 
-		transform.Translate(Vector3.down * Speed * Time.deltaTime, Space.Self);
+		transform.Translate(Vector3.up * Speed * Time.deltaTime, Space.Self);
 	}
 
 

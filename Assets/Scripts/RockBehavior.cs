@@ -50,11 +50,20 @@ public class RockBehavior : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		
 		Debug.Log ("collision detecteed from " + other.gameObject.tag);
-		if(other.gameObject.tag == "Drill"){
+		if(other.gameObject.tag == "Drill" || other.gameObject.tag=="Beam"){
 
 			Instantiate(rockDestroyParticles, other.gameObject.transform.position, transform.rotation);
 
 			Destroy (gameObject);
+		}
+
+		if(other.gameObject.tag == "Rock"){
+
+			Instantiate(rockDestroyParticles, transform.position, transform.rotation);
+
+			Destroy (other.gameObject);
+			Destroy (gameObject);
+
 		}
 		
 	}

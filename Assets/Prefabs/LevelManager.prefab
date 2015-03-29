@@ -45,7 +45,7 @@ MonoBehaviour:
   topObjects:
   - {fileID: 112826, guid: e74991392500f4f489947ac08442a55e, type: 2}
   - {fileID: 116702, guid: c3e8cf55813f54a388adf756430609b2, type: 2}
-  spawnDelaySeconds: 1
+  spawnDelaySeconds: 4
   mainCamera: {fileID: 0}
   cameraDistance: -5
   leftWallPrefab: {fileID: 198128, guid: f5adf4851d7d5470198ac528b3508b81, type: 2}
@@ -54,7 +54,8 @@ MonoBehaviour:
   backgroundLighting: {fileID: 0}
   backgroundMoveSpeed: 5
   wallMoveSpeed: 10
-  bottomObjectsMoveSpeed: 1
+  bottomObjectsMoveSpeed: .5
+  topObjectsMoveSpeed: .5
   mapWidth: 17
   mapHeight: 15
   wallWidth: 2

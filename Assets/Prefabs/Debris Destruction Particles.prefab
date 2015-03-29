@@ -382,9 +382,9 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 1
   RotationModule:
-    enabled: 0
+    enabled: 1
     curve:
-      scalar: .785398185
+      scalar: 6.28318501
       maxCurve:
         serializedVersion: 2
         m_Curve:
