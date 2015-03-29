@@ -32,9 +32,9 @@ public class player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(transform.localPosition.x >= levelManager.wallWidth && transform.localPosition.y <= (levelManager.mapWidth - levelManager.wallWidth)-1){ 
+		if(transform.localPosition.x >= levelManager.wallWidth && transform.localPosition.x <= (levelManager.mapWidth - levelManager.wallWidth)-1){ 
 
-			if(Input.GetKeyDown(KeyCode.Joystick1Button0)){
+			if(Input.GetButtonDown("Fire1")){
 			   fireWeapon();	
 			}
 			if(Input.GetAxisRaw("Horizontal") == 0){
