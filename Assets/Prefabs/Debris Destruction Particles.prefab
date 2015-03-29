@@ -12,7 +12,7 @@ GameObject:
   - 199: {fileID: 19997668}
   - 114: {fileID: 11414546}
   m_Layer: 0
-  m_Name: Rock Destruction Particles
+  m_Name: Debris Destruction Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1105,7 +1105,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ce2e499092f564b17ba618e32518b762, type: 2}
+  - {fileID: 2100000, guid: 56c0c76208dee4fad8ef1b7780b85dff, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

@@ -42,6 +42,9 @@ MonoBehaviour:
   bottomObjects:
   - {fileID: 144192, guid: 6b015ade9693a4434b34ec1937144c44, type: 2}
   - {fileID: 127196, guid: 8571fd9b2ff834222992af4b3d1f366f, type: 2}
+  topObjects:
+  - {fileID: 112826, guid: e74991392500f4f489947ac08442a55e, type: 2}
+  - {fileID: 116702, guid: c3e8cf55813f54a388adf756430609b2, type: 2}
   spawnDelaySeconds: 1
   mainCamera: {fileID: 0}
   cameraDistance: -5

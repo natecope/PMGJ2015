@@ -12,6 +12,9 @@ public class RockBehavior : MonoBehaviour {
 	//how wide?
 	public int tileWidth = 2;
 
+	//move up or down?
+	public bool moveUp;
+
 
 	// Use this for initialization
 	void Start () {
@@ -22,12 +25,20 @@ public class RockBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		float moveSpeed = 0;
 		Vector2 newPos = new Vector2();
-		newPos.y = transform.position.y + levelManager.bottomObjectsMoveSpeed * Time.deltaTime;
+		if(moveUp){
+			moveSpeed = levelManager.bottomObjectsMoveSpeed;
+		} else {
+			moveSpeed = -levelManager.topObjectsMoveSpeed;
+		}
+
+		newPos.y = transform.position.y + moveSpeed * Time.deltaTime;
 		newPos.x = transform.position.x;
 		transform.position = newPos;
 
-		if(transform.position.y > levelManager.mapHeight){
+		if(transform.position.y > levelManager.mapHeight + 2 || 
+		   transform.position.y < 0){
 
 			Destroy(gameObject);
 
@@ -47,4 +58,12 @@ public class RockBehavior : MonoBehaviour {
 		}
 		
 	}
+
+
+
+	void OnParticleCollision(GameObject other) {
+		Debug.Log (other.gameObject.tag);
+	}
+
+
 }

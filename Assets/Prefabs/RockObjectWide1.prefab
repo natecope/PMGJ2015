@@ -55,7 +55,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelManager: {fileID: 11459892, guid: 91beb975b016640a697cfd22d4b86e39, type: 2}
+  rockDestroyParticles: {fileID: 105214, guid: f75d03fe7c63d490abe9c594caf54ec2, type: 2}
   tileWidth: 2
+  moveUp: 1
 --- !u!212 &21211930
 SpriteRenderer:
   m_ObjectHideFlags: 1

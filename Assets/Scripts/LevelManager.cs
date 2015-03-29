@@ -5,6 +5,7 @@ public class LevelManager : MonoBehaviour {
 
 
 	public GameObject[] bottomObjects; 
+	public GameObject[] topObjects;
 	public float spawnDelaySeconds;
 	// reference to camera in order to position correctly with map
 	public GameObject mainCamera;
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour {
 	public float backgroundMoveSpeed;
 	public float wallMoveSpeed;
 	public float bottomObjectsMoveSpeed;
+	public float topObjectsMoveSpeed;
 
 	// excludes left and right wall tile
 	public int mapWidth;
@@ -35,7 +37,7 @@ public class LevelManager : MonoBehaviour {
 		mainCamera.transform.position = new Vector3((mapWidth / 2)+1, (mapHeight / 2) + 1, cameraDistance);
 
 		SpawnLevel();
-		StartObjectSpawner();
+		StartObjectSpawners();
 	}
 	
 	// Update is called once per frame
@@ -45,9 +47,10 @@ public class LevelManager : MonoBehaviour {
 
 	}
 
-	void StartObjectSpawner(){
+	void StartObjectSpawners(){
 
-		StartCoroutine("objectRowSpawner");
+		StartCoroutine("bottomRowSpawner");
+		StartCoroutine("topRowSpawner");
 
 	}
 
@@ -127,7 +130,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 
-	IEnumerator objectRowSpawner(){
+	IEnumerator bottomRowSpawner(){
 		int toSkip = 0;
 		while(true){
 			yield return new WaitForSeconds(spawnDelaySeconds);
@@ -145,6 +148,30 @@ public class LevelManager : MonoBehaviour {
 					toSkip--;
 				}
 
+			}
+		}
+	}
+
+
+
+	IEnumerator topRowSpawner(){
+		int toSkip = 0;
+		while(true){
+			yield return new WaitForSeconds(spawnDelaySeconds);
+			
+			//spawn row of objects. Randomize
+			for(int x = 0 + wallWidth; x < mapWidth - wallWidth; x++){
+				
+				
+				if(toSkip == 0){
+					GameObject objectToSpawn = topObjects[(int)Random.Range (0, topObjects.Length)];
+					GameObject objectSpawned = Instantiate (objectToSpawn, new Vector2(x,mapHeight), objectToSpawn.transform.rotation) as GameObject;
+					
+					toSkip = objectSpawned.GetComponent<RockBehavior>().tileWidth - 1;
+				} else {
+					toSkip--;
+				}
+				
 			}
 		}
 	}
