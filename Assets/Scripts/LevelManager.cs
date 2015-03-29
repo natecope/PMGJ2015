@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour {
 	public GameObject leftWallPrefab;
 	public GameObject rightWallPrefab;
 	public GameObject backgroundPrefab;
-
+	public GameObject backgroundLighting;
 	public float backgroundMoveSpeed;
 	public float wallMoveSpeed;
 
